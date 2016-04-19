@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>H5车坊合作1</title> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="twcClient" id="twcClient" content="false">
+		<link rel="stylesheet" type="text/css" href="../styles/style.css">
+		<link rel="stylesheet" type="text/css" href="../styles/chefang-eins.css">
+		<script type="text/javascript" src="../scripts/plugin/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="../scripts/chefang-eins.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var _ua = navigator.userAgent.toLowerCase();
+				
+				if(_ua.match(/micromessenger/i)) {
+					document.getElementById("wechatNotice").style.display = "block";
+				}	
+			};
+		</script>		
+	</head>
+	<body>
+		<div class="wrap">
+			<section id="cheFangLogin" class="chefang-login">
+				<div class="upper">
+					<div class="logo">
+						<img class="iautos-logo" src="../images/logo-iautos.png" height="100%" />
+						<img class="chefang-logo" src="../images/chefang-logo.png" height="100%" />
+					</div>
+					<div class="mid-bkg"><img src="../images/mid-bkg.png" width="100%" /></div>
+				</div>
+				<div class="main">
+					<div class="input-tele">
+						<input id="inputTele" type="text" value="" maxlength="11" placeholder="请输入手机号" />
+					</div>
+					<div class="input-captcha">
+						<input id="inputCaptcha" type="text" value="" maxlength="4" placeholder="请输入验证码" /><input id="sendCaptcha" type="button" value="获取验证码" /><input type="button" class="waiting" style="display:none;" value="59秒后可重发" />
+					</div>
+					<div class="submit">
+						<input id="getKarten" type="button" value="立即领取" />
+					</div>
+				</div>
+			</section>
+			<section id="cheFangResult" class="chefang-result" style="display:none;">
+				<div id="wechatNotice" class="wechat-notice" style="display:none;"><img src="../images/wechat-notice.png" width="100%" /></div>
+				<div class="combo">
+					<p class="text-content">恭喜！您已成功领取<span id="cardPrice1" class="limit">500元</span>代金券</p>
+					<div class="text-detail">
+					<i class="semi-circle scl"></i>
+					<i class="semi-circle scr"></i>
+					<i class="circle-line"></i>
+						<div class="name-wrap"><h5 class="name"><span id="comboName" class="true-name">内饰清洁杀菌套餐代金券</span></h5></div>
+						<div class="content-wrap">
+							<div class="content">
+								<h6 id="cardPrice2" class="price">500元</h6>
+								<p class="kartennummer">券号：<span id="kartenNummer">1234567890</span></p>
+								<p class="provider">深度养护精洗服务由<img src="../images/chefang-logo.png" height="100%" />提供</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="logo">
+					<img class="iautos-logo" src="../images/logo-iautos.png" height="100%" />
+					<img class="chefang-logo" src="../images/chefang-logo.png" height="100%" />
+				</div>
+				<div class="qr-code">
+					<p class="title">拯救车小白，享受更多车主福利</p>
+					<div class="code"><img src="../images/iautos-wechat-code.jpg" height="100%" /></div>
+					<div class="notice"><img src="../images/wechat-code-notice.png" height="100%" /></div>
+				</div>
+				<div class="statement">
+					<div class="state"><span class="text">精洗券使用说明 </span><i class="line"></i></div>
+					<p class="list"><i class="no">1.</i>本券仅在购买车坊指定套餐时可以使用</p>
+					<p class="list"><i class="no">2.</i>赠券部分不开发票、不设找零、不兑现</p>
+					<p class="list"><i class="no">3.</i>精洗券使用方法：凭借券号和手机号到车坊门店兑换使用，使用时请提前预约</p>
+					<p class="list"><i class="no">4.</i>精洗券有效期至：2016年12月31日</p>
+					<div class="contact-method">
+						<p>预约电话：010-53359520</p>
+						<p>车坊门店地址：北京市丰台区大红门南路151号</p>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="question-center">
+			<div class="popup-gray" style="display:none;">
+				<p class="text">
+					<span class="error-icon"></span>
+				</p>
+			</div>
+			<div class="popup-blue" style="display:none;">
+				<p class="text">
+					<span class="fit-icon"></span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,322 @@
+$positionTop: 18px;
+$positionLeft: 7%;
+
+$text-captcha-width: 58%;
+$text-captcha-margin: 5%;
+
+%textinput-styles {
+	background-color: #fff;
+	border: 1px solid #d6d6d6;
+}
+
+%input-wrap {
+	margin-bottom: 12px;
+}
+
+//public gradient function.
+@mixin normalGradient($type, $direction, $startColor, $endColor) {
+  background-image: -moz-#{$type}-gradient($direction, #{$startColor}, #{$endColor});// for Firefox.
+  background-image: -webkit-#{$type}-gradient($direction,#{$startColor}, #{$endColor});// for new chrome.
+  
+  @if $direction == top {
+   background-image: -webkit-gradient(#{$type}, $direction, bottom, from(#{$startColor}), to(#{$endColor}));// for old chrome.
+  } @else if $direction == left {
+    background-image: -webkit-gradient(#{$type}, $direction, right, from(#{$startColor}), to(#{$endColor}));// for old chrome.
+  }
+  
+  background-image: -o-#{$type}-gradient($direction, #{$startColor}, #{$endColor});// for opera.
+  background-image: -ms-#{$type}-gradient($direction, #{$startColor}, #{$endColor});// IE 10+.
+  
+  @if $type == linear {
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$startColor}, endColorstr=#{$endColor});// IE 9-.
+  } @else if $type == radial {
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#{$startColor}, endColorstr=#{$endColor});// IE 9-.
+  }
+}
+
+// border image.
+@mixin border-image($urlPrefix, $url, $slice, $width, $outset, $repeat) {
+	border-image-source: url(#{$urlPrefix}/images/#{$url});
+	border-image-slice: $slice;
+	border-image-width: $width;
+	border-image-outset: $outset;
+	border-image-repeat: $repeat;
+}
+
+.chefang-login {
+	background-color: #f0f0f0;
+	.upper {
+		position: relative;
+		padding: $positionTop 0 17px $positionLeft;
+		@include normalGradient(linear, top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+	}
+	.logo {
+		position: absolute;
+		top: $positionTop;
+		left: $positionLeft;
+		height: 26px;
+		overflow: hidden;
+		img {
+			float: left;
+			padding-right: 20px;
+		}
+	}
+	.mid-bkg {
+		padding-top: 6px;
+		img {
+			margin-left: -2.5%;
+		}
+	}
+	.main {
+		width: 100% - $positionLeft * 2;
+		margin: 0 auto;
+	}
+	input {
+		height: 43px;
+		font-size: 15px;
+		font-family: Microsoft Yahei;
+		border-radius: 5px;
+		@media screen and (max-width:320px) {
+			& {
+				height: 41px;
+			}
+		}
+	}
+	input[type="text"] {
+		padding-left: 14px;
+		@extend %textinput-styles;
+	}
+	input[type="button"] {
+		text-align: center;
+	}
+
+	.input-tele {
+		@extend %input-wrap;
+	}
+
+	.input-captcha {
+		@extend %input-wrap;
+		input[type="text"] {
+			width: $text-captcha-width;
+			margin-right: $text-captcha-margin;
+		}
+		input[type="button"] {
+			width: 100% - $text-captcha-width - $text-captcha-margin;
+			background-color: #019cef;
+			color: #fff;
+		}
+		input.waiting {
+			background-color: #ccc;
+		}
+	}
+	.submit {
+		input[type="button"] {
+			width: 100%;
+			height: 50px;
+			background-color: #72b616;
+			font-size: 20px;
+			font-weight: bold;
+			color: #fff;
+			@media screen and (max-width:320px) {
+				& {
+					height: 45px;
+				}
+			}
+		}
+	}
+}
+
+.chefang-result {
+	padding: 0 $positionLeft 32px;
+	background-color: #f0f0f0;
+	.wechat-notice {
+		padding-top: 12px;
+	}
+	.combo {
+		overflow: hidden;
+	}
+	.text-content {
+		text-align: center;
+		padding: 23px 0 21px;
+		font-size: 20px;
+		font-weight: bold;
+		color: #333;
+		.limit {
+			color: #ffa000;
+		}
+	}
+	.text-detail {
+		position: relative;
+		text-align: center;
+		background-color: #fff;
+		border-left: 1px solid #e0e0e0;
+		border-right: 1px solid #e0e0e0;
+		border-bottom: 1px solid #e0e0e0;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		.semi-circle {
+			position: absolute;
+			top: 66px;
+			width: 12px;
+			height: 12px;
+			background-color: #f0f0f0;
+			border: 1px solid #e0e0e0;
+			border-radius: 50%;
+		}
+		.scl {
+			left: -6px;
+		}
+		.scr {
+			right: -6px;
+		}
+		.circle-line {
+			position: absolute;
+			top: 70px;
+			left: 2%;
+			width: 96%;
+			height: 3px;
+			background: url(../images/chefang-circleline.png) repeat-x;
+			background-size: contain;
+		}
+		.name-wrap {
+			padding: 0 6px;
+			background-color: #cd3333;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+		.name {
+			height: 71px;
+			line-height: 31px;
+			border-top: 6px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #fff;
+			@include border-image('..', 'border-image.png', 17 0 0 0, 6px 0 0 0, 1px 0 0 0, round);
+		}
+		.true-name {
+			display: inline-block;
+			vertical-align: -50%;
+		}
+		.content-wrap {
+			padding: 12px 10px 20px;
+		}
+		.content {
+			height: 151px;
+			padding: 0 11px;
+			background-color: #ffebe0;
+			@include border-image('..', 'border-image.png', 0 0 17 0, 0 0 6px 0, 0 0 21px 0, round);
+		}
+		.price {
+			line-height: 66px;
+			font-size: 36px;
+			font-weight: bold;
+			color: #cd3333;
+		}
+		.kartennummer {
+			padding: 12px 0;
+			border-top: 1px dashed #b7917d;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+		}
+		.provider {
+			height: 17px;
+			line-height: 17px;
+			font-size: 14px;
+			color: #5b4947;
+			img {
+				display: inline-block;
+				padding: 0 7px 0 9px;
+				vertical-align: top;
+			}
+		}
+	}
+	.logo {
+		height: 26px;
+		margin: 28px 0 39px;
+		text-align: center;
+		img {
+			display: inline-block;
+			padding-right: 20px;
+		}
+	}
+	.qr-code {
+		position: relative;
+		height: 365px;
+		text-align: center;
+		margin: 0 -8%;
+		background-color: #fff;
+		border-top: 1px solid #e0e0e0;
+		border-bottom: 1px solid #e0e0e0;
+		img {
+			display: inline-block;
+		}
+		.title {
+			padding: 30px 0 10px;
+			font-size: 22px;
+			font-family: FZZYSJW1;
+			font-weight: bold;
+			color: #333;
+		}
+		.code {
+			height: 204px;
+		}
+		.notice {
+			height: 62px;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: -16px;
+			left: 46%;
+			width: 30px;
+			height: 30px;
+			background-color: #fff;
+			border-top: 1px solid #e0e0e0;
+			border-left: 1px solid #e0e0e0;
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			-moz-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			-o-transform: rotate(45deg);
+		}
+	}
+	.statement {
+		line-height: 28px;
+		margin-top: 20px;
+		color: #333;
+		.list {
+			position: relative;
+			padding-left: 12px;
+			.no {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+		.contact-method {
+			padding-top: 15px;
+			font-size: 15px;
+			font-weight: bold;
+		}
+	}
+	.state {
+		position: relative;
+		margin-bottom: 16px;
+		text-align: center;
+		.text {
+			padding: 0 12px;
+			background-color: #f0f0f0;
+			color: #999;
+			position: relative;
+			z-index: 1;
+		}
+		.line {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			border-top: 1px solid #999;
+		}
+	}
+}
